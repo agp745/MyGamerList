@@ -8,17 +8,42 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <div id="gameList">
-        <div class="card">
-            <div class="card_details">
-                <!-- <img> -->
-                <span class="genre">GENRE PLACEHOLDER</span>
-                <div class="title"></div>
-                <p class="description"></p>
-            </div>
+    <nav>Filler Nav</nav>
+
+    <section class="Filters">
+        <a href="" onclick ="" class="filterButton">Filter</a>
+        <div class="genre">
+            <span class="filterTitle">Genre</span>
+            
         </div>
-    </div>
+        <div class="platform">
+            <span class="filterTitle">Platform</span>
+            
+        </div>
+        <div class="rating">
+            <span class="filterTitle">Rating</span>
+            <input type="number" id="ratingInput">
+        </div>
+        <div class="release">
+            <span class="filterTitle">Release</span>
+            <input type="date" id="startDateInput">
+            to
+            <input type="date" id="endDateInput">
+        </div>
+    </section>
+
+
+    <section id="gameList">
+
+        <div class="top4">
+            
+        </div>
+
+        <button id="randomButton">Random Button</button>
+        <div class="random">
+            
+        </div>
+    </section>
     
 
     <script src="api.js"></script>
