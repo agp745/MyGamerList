@@ -22,7 +22,8 @@ async function searchGames(title) {
 
 async function filteredSearch(genre, platform, rating, releaseMin, releaseMax) {
      
-    const request = await fetch(`https://api.rawg.io/api/games?page_size=20&genres=${genre}&platforms=${platform}&metacritic=${rating}&dates=${releaseMin},${releaseMax}&key=e9a677462e984c02a2f1a9afab3493e2`)
+    // const request = await fetch(`https://api.rawg.io/api/games?page_size=20&genres=${genre}&platforms=${platform}&metacritic=${rating}&dates=${releaseMin},${releaseMax}&key=e9a677462e984c02a2f1a9afab3493e2`)
+    const request = await fetch(`https://api.rawg.io/api/games?page_size=20&genres=action&platforms=xbox&metacritic=${rating}&dates=${releaseMin},${releaseMax}&key=e9a677462e984c02a2f1a9afab3493e2`)
     const response = await request.json()
     console.log(response)
     const filteredGames = response.results 
