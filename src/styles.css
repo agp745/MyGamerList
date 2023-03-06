@@ -1,0 +1,23 @@
+.top4 {
+    display: flex; 
+    gap: 1rem;
+}
+
+.random {
+    display: flex;
+    gap: 1rem;
+}
+
+.filterTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.filterLabel {
+    font-size: .9rem;
+    font-style: italic;
+}
+
+img {
+    width: 10rem
+}
