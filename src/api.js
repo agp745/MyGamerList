@@ -5,11 +5,11 @@ async function hotGames(element) { //add dynamically changing dates
     console.log(top4)
     //dynamically add all genres & platforms
     const games = await top4.map((game) => {
-        return `<div class="card_details">
-            <img src="${game.background_image}" class="cardImg">
-            <div class="genre">${game.genres[0].name}</div>
-            <div class="title">${game.name}</div>
-            <div class="platforms">${game.platforms[0].platform.name}</div>
+        return `<div class="card" id="card">
+            <img src="${game.background_image}" id="cardImg">
+            <div id="genre">${game.genres[0].name}</div>
+            <div id="title">${game.name}</div>
+            <div id="platforms">${game.platforms[0].platform.name}</div>
         </div>`
     })
     element.innerHTML += games.join('')
@@ -21,13 +21,14 @@ async function generalGames(element) { //20 Popular Games
     const general = request.results
     console.log(general) 
     const games = await general.map((game) => {
-        return `<div class="card_details">
-            <img src="${game.background_image}" class="cardImg">
-            <div class="genre">${game.genres[0].name}</div>
-            <div class="title">${game.name}</div>
-            <div class="platforms">${game.platforms[0].platform.name}</div>
+        return `<div class="card" id="card">
+            <img src="${game.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
+            <div id="genre">${game.genres[0].name}</div>
+            <div id="title">${game.name}</div>
+            <div id="platforms">${game.platforms[0].platform.name}</div>
         </div>`
     })
+    //Figre out Image Resize
     element.innerHTML += games.join('')
 }
 
@@ -57,6 +58,7 @@ async function getGenres(element) {
         return `
             <label for="${genre.name}" class="filterLabel">${genre.name}</label>
             <input type="checkbox" id="${genre.name}">
+            <br>
         `
     })
     element.innerHTML += genres.join('')
@@ -70,10 +72,11 @@ async function getPlatforms(element) {
     const platforms = platformsArr.map((plat) => {
         return `
             <label for="${plat.name}" class="filterLabel">${plat.name}</label>
-            <input type="checkbox" id="${plat.name}>
+            <input type="checkbox" id="${plat.name}">
+            <br>
         `
     })
-    element.innerHTML += platforms
+    element.innerHTML += platforms.join("")
 }
 
 // searchGames('halo')

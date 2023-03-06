@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 .top4 {
-    display: flex; 
     gap: 1rem;
 }
 
@@ -22,6 +21,39 @@
     font-style: italic;
 }
 
-img {
-    width: 10rem
+
+#cardImg {
+    max-width: 10rem;
+    overflow: hidden;
+}
+
+#genre {
+    border:3px solid blue;
+    font-style: italic;
+    border-radius: 25px;
+  background: chocolate;
+  text-align: center;
+  font-size: x-large;
+  transform:scale(50%)
+}
+
+#title {
+    font-style: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+#platforms {
+    text-align: center;
+    font-size: 80;
+    border:3px solid blue;
+    border-radius:25px;
+    background: chocolate
+}
+
+#card {
+    background-color: cyan;
+    border: 3px; 
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
 }

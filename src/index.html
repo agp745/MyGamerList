@@ -1,53 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project UI</title>
     <link rel="stylesheet" href="input.css">
-    <link rel="stylesheet"  href="/dist/output.css">
+    <link rel="stylesheet" href="/dist/output.css">
 </head>
+
 <body>
-    <nav class="bg-red-400">Filler Nav</nav>
 
-    <section class="Filters">
-        <a href="" onclick ="" class="filterButton">Filter</a>
-        <div class="genre">
-            <span class="filterTitle">Genre</span>
+    <nav class="bg-red-400">
+        <a href="" class="float-right">About Us</a>
+            <a href="https://rawg.io/apidocs" class="float-right">API </a>
+            <a href="https://github.com/agp745/MyGamerList" class="float-right">GitHub</a>
+        <span>Filler Nav</span>
+        <br>
+        <label>Filter</label>
+        <input type="checkbox" id="hideShowBox">
+        <!-- <div id="info" class="space-x-2 bg-red-400 text-right mr-2"> -->
             
-        </div>
-        <div class="platform">
-            <span class="filterTitle">Platform</span>
-            
-        </div>
-        <div class="rating">
-            <span class="filterTitle">Rating</span>
-            <input type="number" id="ratingInput">
-        </div>
-        <div class="release">
-            <span class="filterTitle">Release</span>
-            <input type="date" id="startDateInput">
-            to
-            <input type="date" id="endDateInput">
-        </div>
-    </section>
+        <!-- </div> -->
+    </nav>
+
+    <div id="wrapper" class="flex flex-row">
+        <section class="flex flex-col bg-blue-400 hidden flex-initial p-5 overflow-y-scroll max-h-screen" id="filters">
+            <div class="genre">
+                <span class="filterTitle">Genre</span>
+                <br>
+            </div>
+            <div class="platform mt-5">
+                <span class="filterTitle">Platform</span>
+                <br>
+            </div>
+            <div class="rating flex flex-col mt-5">
+                <span class="filterTitle">Rating</span>
+                <input type="number" id="ratingInput" class="rounded-full border-2 border-teal-500">
+                <!-- SCALE 75 + FIX POSITIONING (ALIGN LEFT) -->
+            </div>
+            <div class="release mt-5 mb-10">
+                <span class="filterTitle">Release</span>
+                <input type="date" id="startDateInput">
+                to
+                <input type="date" id="endDateInput">
+            </div>
+        </section>
 
 
-    <section id="gameList">
 
-        <div class="top4">
-            
-        </div>
+        <section class="flex flex-col overflow-hidden" id="gameList">
+            <div class="text-center mt-16">HOT TITLES</div>
+            <div class="top4 flex flex-wrap justify-center mb-10">
 
-        <button id="randomButton">Random Button</button>
-        <div class="random">
-            
-        </div>
-    </section>
-    
+            </div>
+
+            <div class="text-center">RANDOM TITLES</div>
+            <div class="random overflow-hidden overflow-x-scroll bg-red-400 mx-32 p-3">
+
+            </div>
+            <button id="randomButton" class="rounded-full bg-teal-400 border-blue-800 border-2 items-center border-double self-center px-.5 mt-5">Randomize</button>
+        </section>
+    </div>
 
     <script src="api.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
