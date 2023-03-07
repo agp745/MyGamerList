@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project UI</title>
-    <link rel="stylesheet" href="input.css">
-    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="../src/input.css">
+    <link rel="stylesheet" href="../dist/output.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <span>My Gamer List</span>
         <br>
         <label>Filter</label>
-        <input type="checkbox" id="hideShowBox">
+        <input type="checkbox" id="showFilters">
         <!-- <div id="info" class="space-x-2 bg-red-400 text-right mr-2"> -->
             
         <!-- </div> -->
@@ -27,24 +27,28 @@
 
     <div id="wrapper" class="flex flex-row">
         <section id="filters" class="flex flex-col bg-blue-400 hidden flex-initial p-5 overflow-y-scroll max-h-screen">
-            <div id="genreFilter">
-                <span class="filterTitle">Genre</span>
+
+            <span class="filterTitle">Genre</span>
+            <input type="checkbox" id="genreCheckbox">
+            <div id="genreFilter" class="hidden">
                 <br>
             </div>
-            <div id="platformFilter" class="mt-5">
-                <span class="filterTitle">Platform</span>
+
+            <span class="filterTitle">Platform</span>
+            <input type="checkbox" id="platformCheckbox">
+            <div id="platformFilter" class="mt-5 hidden">
                 <br>
             </div>
+
             <div class="rating flex flex-col mt-5">
                 <span class="filterTitle">Rating</span>
                 <input type="number" id="ratingInput" class="rounded-full border-2 border-teal-500">
                 <!-- SCALE 75 + FIX POSITIONING (ALIGN LEFT) -->
             </div>
+
             <div class="release mt-5 mb-10">
                 <span class="filterTitle">Release</span>
-                <input type="date" id="startDateInput">
-                to
-                <input type="date" id="endDateInput">
+                <input type="date" id="dateInput">
             </div>
         </section>
 
@@ -58,10 +62,12 @@
             <div id="random" class=" flex space-x-1 overflow-hidden overflow-x-scroll bg-red-400 mx-32 p-3">
 
             </div>
-            <button id="randomButton" class="rounded-full bg-teal-400 border-blue-800 border-2 items-center border-double self-center px-.5 mt-5">Randomize</button>
+            <button id="randomButton" class="text-sm rounded-full bg-teal-400 border-blue-800 border-2 items-center border-double self-center px-.5 mt-5">Randomize</button>
+            <button id="filterRandomButton" class="bg-purple-300 border-yellow-300 border-2 rounded-sm items-center">Randomize by Filter</button>
         </section>
     </div>
 
+    <script src="idLists.js"></script>
     <script src="api.js"></script>
     <script src="main.js"></script>
 </body>

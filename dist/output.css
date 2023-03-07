@@ -513,16 +513,8 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.fixed {
-  position: fixed;
-}
-
 .float-right {
   float: right;
-}
-
-.m-5 {
-  margin: 1.25rem;
 }
 
 .mx-32 {
@@ -530,52 +522,24 @@ video {
   margin-right: 8rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .mb-10 {
   margin-bottom: 2.5rem;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
-.mt-16 {
-  margin-top: 4rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
 }
 
 .mr-2 {
   margin-right: 0.5rem;
 }
 
-.inline-block {
-  display: inline-block;
+.mt-16 {
+  margin-top: 4rem;
 }
 
-.inline {
-  display: inline;
+.mt-5 {
+  margin-top: 1.25rem;
 }
 
 .flex {
   display: flex;
-}
-
-.inline-flex {
-  display: inline-flex;
 }
 
 .hidden {
@@ -595,21 +559,12 @@ video {
   min-height: fit-content;
 }
 
-.w-max {
-  width: -moz-max-content;
-  width: max-content;
-}
-
 .max-w-lg {
   max-width: 32rem;
 }
 
 .flex-initial {
   flex: 0 1 auto;
-}
-
-.basis-full {
-  flex-basis: 100%;
 }
 
 .flex-row {
@@ -632,10 +587,10 @@ video {
   justify-content: center;
 }
 
-.space-x-3 > :not([hidden]) ~ :not([hidden]) {
+.space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
-  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -644,26 +599,12 @@ video {
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-x-10 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
 .self-center {
   align-self: center;
 }
 
-.overflow-auto {
-  overflow: auto;
-}
-
 .overflow-hidden {
   overflow: hidden;
-}
-
-.overflow-y-hidden {
-  overflow-y: hidden;
 }
 
 .overflow-x-scroll {
@@ -674,12 +615,12 @@ video {
   overflow-y: scroll;
 }
 
-.whitespace-nowrap {
-  white-space: nowrap;
-}
-
 .rounded-full {
   border-radius: 9999px;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .border-2 {
@@ -695,14 +636,29 @@ video {
   border-color: rgb(30 64 175 / var(--tw-border-opacity));
 }
 
+.border-purple-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(192 132 252 / var(--tw-border-opacity));
+}
+
 .border-teal-500 {
   --tw-border-opacity: 1;
   border-color: rgb(20 184 166 / var(--tw-border-opacity));
 }
 
+.border-yellow-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(253 224 71 / var(--tw-border-opacity));
+}
+
 .bg-blue-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+}
+
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
 .bg-red-400 {
@@ -715,16 +671,17 @@ video {
   background-color: rgb(45 212 191 / var(--tw-bg-opacity));
 }
 
+.bg-purple-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 180 254 / var(--tw-bg-opacity));
+}
+
 .p-3 {
   padding: 0.75rem;
 }
 
 .p-5 {
   padding: 1.25rem;
-}
-
-.p-2 {
-  padding: 0.5rem;
 }
 
 .text-center {
@@ -735,7 +692,26 @@ video {
   text-align: right;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
 
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+body {
+  overflow-y: hidden;
+}
+
+#top4 {
+  gap: 1rem;
+}
+
+#random {
+  gap: 1rem;
+}
 
 .filterTitle {
   font-size: 1.2rem;
@@ -747,33 +723,38 @@ video {
   font-style: italic;
 }
 
+/* FIX POSITIONING */
+
+#github {
+  max-width: 10px;
+}
+
 #cardImg {
   max-width: 10rem;
   overflow: hidden;
 }
 
 /* #genre {
-  border:3px solid blue;
-  font-style: italic;
-  border-radius: 25px;
-  background: chocolate;
-  text-align: center;
-  font-size: x-large;
-  transform:scale(50%)
+    border:3px solid blue;
+    font-style: italic;
+    border-radius: 25px;
+    background: chocolate;
+    text-align: center;
+    font-size: x-large;
+    transform:scale(50%)
 } */
 
 #title {
   font-style: bold;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
 }
-/* 
-#platforms {
-  text-align: center;
-  font-size: 80;
-  border:3px solid blue;
-  border-radius:25px;
-  background: chocolate
+
+/* #platforms {
+    text-align: center;
+    font-size: 80;
+    border:3px solid blue;
+    border-radius:25px;
+    background: chocolate
 } */
 
 #card {
@@ -781,4 +762,5 @@ video {
   border: 3px;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
+  max-width: 10rem;
 }
