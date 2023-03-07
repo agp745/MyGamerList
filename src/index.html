@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="darkSwitch">
 
 <head>
     <meta charset="UTF-8">
@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../dist/output.css">
 </head>
 
-<body>
+<body class="bg-sky-50 dark:bg-slate-800">
 
-    <nav class="bg-red-400">
+    <nav class="bg-yellow-300 dark:bg-violet-600 border-2 border-b-sky-500 border-t-0">
         <a href="" target="_blank" class="float-right">About Us</a>
         <a href="https://rawg.io/apidocs" target="_blank" class="float-right">API </a>
         <a href="https://github.com/agp745/MyGamerList" target="_blank" class="float-right"><img id="github" src="../assets/github.png"></a>
@@ -26,7 +26,7 @@
     </nav>
 
     <div id="wrapper" class="flex flex-row">
-        <section id="filters" class="flex flex-col bg-blue-400 hidden flex-initial p-5 overflow-y-scroll max-h-screen">
+        <section id="filters" class="flex flex-col bg-yellow-300 dark:bg-violet-600 hidden flex-initial p-5 overflow-y-scroll max-h-screen  border-2 border-r-sky-500 border-t-0 border-l-0">
 
             <span class="filterTitle">Genre</span>
             <input type="checkbox" id="genreCheckbox">
@@ -52,17 +52,21 @@
             </div>
         </section>
 
-
+        <button id="darkButton">Dark Mode</button>
 
         <section class="flex flex-col overflow-hidden" id="gameList">
-            <div class="text-center mt-16">HOT TITLES</div>
+            <div class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">WHAT'S HOT?</div>
             <div id="top4" class="flex justify-center mb-10"></div>
-
-            <div class="text-center">RANDOM TITLES</div>
-            <div id="random" class=" flex space-x-1 overflow-hidden overflow-x-scroll bg-red-400 mx-32 p-3">
-
+        
+            <div class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">DISCOVER</div>
+        
+            <div id="random" class=" flex space-x-1 overflow-auto mx-32 p-3 border-2 rounded-3xl bg-slate-500">
             </div>
-            <button id="randomButton" class="text-sm rounded-full bg-teal-400 border-blue-800 border-2 items-center border-double self-center px-.5 mt-5">Randomize</button>
+             <div class="directionalButtons text-center">
+                <button id = "leftArrow" class="leftArrow bg-yellow-300 border-2 items-center rounded-full border-double self-center ">Left</button> 
+                <button id = "rightArrow" class="rightArrow bg-yellow-300 border-2 items-center rounded-full border-double self-center">Right</button>
+            </div>
+            <button id="randomButton" class="rounded-full bg-yellow-300 border-blue-800 border-2 items-center border-double self-center px-.5 mt-5">Randomize</button>
             <button id="filterRandomButton" class="bg-purple-300 border-yellow-300 border-2 rounded-sm items-center">Randomize by Filter</button>
         </section>
     </div>

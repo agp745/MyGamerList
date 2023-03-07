@@ -9,6 +9,16 @@ const dateFilter = document.querySelector('#dateInput')
 const filters = document.querySelector('#filters')
 const showFilters = document.querySelector('#showFilters')
 const randomizerButton = document.querySelector('#randomButton')
+const left = document.getElementById("leftArrow")
+const right = document.getElementById("rightArrow")
+const darkButton = document.getElementById("darkButton")
+const darkSwitch = document.getElementById("darkSwitch")
+
+darkButton.addEventListener('click',darkMode) 
+
+ function darkMode() {
+    darkSwitch.classList.add('dark')
+ }
 const filterRandomButton = document.querySelector('#filterRandomButton')
 
 function hideShow(button, element) {
@@ -25,6 +35,22 @@ hotGames(top4List)
 generalGames(randomList)
 getGenres(genreFilter)
 getPlatforms(platformFilter)
+
+left.addEventListener("mouseenter", function(){
+    idx = setInterval(() => randomList.scrollLeft -= 4, 08);
+  });
+  
+  left.addEventListener("mouseleave", function(){
+    clearInterval(idx);
+  });
+  
+  right.addEventListener("mouseenter", function(){
+    idx = setInterval(() => randomList.scrollLeft += 4, 08);
+  });
+  
+  right.addEventListener("mouseleave", function(){
+    clearInterval(idx);
+  });
 
 hideShow(showFilters, filters)
 hideShow(genreCheckbox, genreFilter)
