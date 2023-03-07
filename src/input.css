@@ -7,7 +7,7 @@ body {
 }
 
 #top4 {
-     gap: 1rem; 
+    gap: 1rem; 
 }
 
 #random {
@@ -34,7 +34,7 @@ body {
     overflow: hidden;
 }
 
-#genre {
+/* #genre {
     border:3px solid blue;
     font-style: italic;
     border-radius: 25px;
@@ -42,24 +42,25 @@ body {
     text-align: center;
     font-size: x-large;
     transform:scale(50%)
-}
+} */
 
 #title {
     font-style: bold;
     text-align: center;
 }
 
-#platforms {
+/* #platforms {
     text-align: center;
     font-size: 80;
     border:3px solid blue;
     border-radius:25px;
     background: chocolate
-}
+} */
 
 #card {
     background-color: cyan;
     border: 3px; 
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
+    max-width: 10rem;
 }

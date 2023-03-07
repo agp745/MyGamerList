@@ -3,13 +3,26 @@ async function hotGames(element) { //add dynamically changing dates
     .then(response => response.json())
     const top4 = request.results
     console.log(top4)
-    //dynamically add all genres & platforms
+
     const games = await top4.map((game) => {
+
+        const genres = game.genres.map((genre) => {
+            return `<div id="genre">${genre.name}</div>`
+        })
+
+        const parentPlatforms = game.parent_platforms.map((plat) => {
+            return `<div id="platforms">${plat.platform.name}</div>`
+        })
+
         return `<div class="card" id="card">
             <img src="${game.background_image}" id="cardImg">
-            <div id="genre">${game.genres[0].name}</div>
+            <div id="plat-genreContainer" class="flex flex-wrap">
+                ${genres}
+            </div>
             <div id="title">${game.name}</div>
-            <div id="platforms">${game.platforms[0].platform.name}</div>
+            <div id="plat-genreContainer" class="flex flex-wrap">
+                ${parentPlatforms}
+            </div>
         </div>`
     })
     element.innerHTML += games.join('')
@@ -19,13 +32,26 @@ async function generalGames(element) { //20 Popular Games
     const request = await fetch('https://api.rawg.io/api/games?key=e9a677462e984c02a2f1a9afab3493e2')
     .then(response => response.json())
     const general = request.results
-    console.log(general) 
+    console.log(general)
     const games = await general.map((game) => {
+
+        const genres = game.genres.map((genre) => {
+            return `<div id="genre">${genre.name}</div>`
+        })
+
+        const parentPlatforms = game.parent_platforms.map((plat) => {
+            return `<div id="platforms">${plat.platform.name}</div>`
+        })
+
         return `<div class="card" id="card">
             <img src="${game.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
-            <div id="genre">${game.genres[0].name}</div>
+            <div id="plat-genreContainer" class="flex flex-wrap">
+                ${genres}
+            </div>
             <div id="title">${game.name}</div>
-            <div id="platforms">${game.platforms[0].platform.name}</div>
+            <div id="platformContainer" class="flex flex-wrap">
+            ${parentPlatforms}
+            </div>
         </div>`
     })
     //Figre out Image Resize
@@ -68,7 +94,6 @@ async function getPlatforms(element) {
     const request = await fetch('https://api.rawg.io/api/platforms?key=e9a677462e984c02a2f1a9afab3493e2')
     .then(response => response.json())
     const platformsArr = request.results
-    console.log(platformsArr)
     const platforms = platformsArr.map((plat) => {
         return `
             <label for="${plat.name}" class="filterLabel">${plat.name}</label>
@@ -76,7 +101,28 @@ async function getPlatforms(element) {
             <br>
         `
     })
-    element.innerHTML += platforms.join("")
+    element.innerHTML += platforms.join('')
+}
+
+async function randomizer(element, id) {
+    const request = await fetch(`https://api.rawg.io/api/games/${id}?key=e9a677462e984c02a2f1a9afab3493e2`)
+    .then(response => response.json())
+    
+    const genres = request.genres.map((genre) => {
+        return `<div id="genre">${genre.name}</div>`
+    })
+    genres.join('')
+
+    const randomGame = `
+        <div class="card" id="card">
+            <img src="${request.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
+            <div id="plat-genreContainer" class="flex flex-wrap">
+                ${genres}
+            </div>
+            <div id="title">${request.name}</div>
+        </div>
+    `
+    element.innerHTML += randomGame
 }
 
 // searchGames('halo')
