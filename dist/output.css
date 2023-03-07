@@ -735,14 +735,7 @@ video {
   text-align: right;
 }
 
-.top4 {
-  gap: 1rem;
-}
 
-.random {
-  display: flex;
-  gap: 1rem;
-}
 
 .filterTitle {
   font-size: 1.2rem;

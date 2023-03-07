@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.top4 {
-    gap: 1rem;
+body {
+    overflow-y: hidden;
 }
 
-.random {
-    display: flex;
+#top4 {
+     gap: 1rem; 
+}
+
+#random {
     gap: 1rem;
 }
 
@@ -21,6 +24,10 @@
     font-style: italic;
 }
 
+/* FIX POSITIONING */
+#github {
+    max-width: 10px;
+}
 
 #cardImg {
     max-width: 10rem;
@@ -31,15 +38,14 @@
     border:3px solid blue;
     font-style: italic;
     border-radius: 25px;
-  background: chocolate;
-  text-align: center;
-  font-size: x-large;
-  transform:scale(50%)
+    background: chocolate;
+    text-align: center;
+    font-size: x-large;
+    transform:scale(50%)
 }
 
 #title {
     font-style: bold;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
 }
 
