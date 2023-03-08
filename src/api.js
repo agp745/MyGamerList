@@ -181,6 +181,32 @@ async function filteredSearch(element, genre, platforms, rating, release) {
     element.innerHTML += filteredGames
 }
 
+async function gameSearch(element, id) {
+    const request = await fetch(`https://api.rawg.io/api/games/${id}?key=e9a677462e984c02a2f1a9afab3493e2`)
+    .then(response => response.json())
+    console.log(request)
+
+    const genres = request.genres.map((genre) => {
+        return `<div id="genre">${genre.name}</div>`
+    })
+
+    const platforms = request.platforms.map((plat) => {
+        return `<div id="platforms">${plat.platform.name}</div>`
+    })
+
+    const game = `
+        <div id="searchedCard">
+            <img id="searchedImage" src="${request.background_image}">
+            <div id="searchedTitlie">${request.name}</div>
+            ${genres}
+            <div id="searchedDescription">${request.description}</div>
+            ${platforms}
+        </div>
+    `
+    element.innerHTML = game
+}
+
+
 let genresFilteredArr = []
 let platformsFilteredArr = []
 

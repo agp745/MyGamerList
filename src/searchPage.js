@@ -1,6 +1,6 @@
-const testh1 = document.querySelector('#test')
-const testbttn = document.querySelector('#testbttn')
+const searchedGame = document.querySelector('#searchedGame')
+const moreGamesButton = document.querySelector('#moreGamesButton')
+const moreLikeThis = document.querySelector('#moreLikeThis')
 
-testbttn.addEventListener('click', () => {
-    testh1.innerHTML += 'IT WORKS!!'
-})
+
+gameSearch(searchedGame, '695743')
