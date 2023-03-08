@@ -71,12 +71,22 @@ randomizerButton.addEventListener('click',() => {
 })
 
 filterRandomButton.addEventListener('click', () => {
+
+    let genreStr = genresFilteredArr.toString()
+    if(genreStr === '') {
+        genreStr = 'indie' //default value
+    }
+
+    let platformStr = platformsFilteredArr.toString()
+    if(platformStr === '') {
+        platformStr = '4' //default value (PC)
+    }
+
     const rating = ratingFilter.value 
 
     if(dateFilter.value === '') {
-        return filteredSearch(randomList, 'indie', '4', rating)
+        return filteredSearch(randomList, genreStr, platformStr, rating)
     }
-
     const release =  new Date(dateFilter.value).getTime()
     //1 day = 86400000ms || 1 month = 2592000000ms || 6 months = 15552000000ms
     const preReleaseISO = new Date(release - 15552000000).toISOString()
@@ -86,7 +96,7 @@ filterRandomButton.addEventListener('click', () => {
     const postRelease = postReleaseISO.replace('T00:00:00.000Z','')
     const releaseRange = `${preRelease},${postRelease}`
 
-    filteredSearch(randomList, 'indie', '4', rating, releaseRange)
+    filteredSearch(randomList, genreStr, platformStr, rating, releaseRange)
 })
 
 darkButton.addEventListener('click', () => darkSwitch.classList.add('dark')) 

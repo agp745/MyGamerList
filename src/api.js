@@ -27,7 +27,7 @@ async function hotGames(element) { //add dynamically changing dates
     element.innerHTML += games.join('')
 }
 
-async function generalGames(element) { //20 Popular Games
+async function generalGames(element) {
     const request = await fetch('https://api.rawg.io/api/games?key=e9a677462e984c02a2f1a9afab3493e2')
     .then(response => response.json())
     const general = request.results
@@ -57,30 +57,47 @@ async function generalGames(element) { //20 Popular Games
     element.innerHTML += games.join('')
 }
 
-function selectedGenre(idName){
-    const button = document.querySelector(`#${idName}`)
-    button.addEventListener('change', function() {
-        if(this.checked) {
-            console.log(`checked!${idName}`)
-        } else {
-            console.log(`unchecked!${idName}`)
-        }   
-    })
-}
-
 async function getGenres(element) {
     const request = await fetch('https://api.rawg.io/api/genres?key=e9a677462e984c02a2f1a9afab3493e2')
     .then(response => response.json())
     const genresArr = request.results
     const genres = genresArr.map((genre) =>{
-
+        if(genre.name === 'RPG') {
+            const name = 'role-playing-games-rpg'
+            return `
+            <label for="${name}" class="filterLabel">${genre.name}</label>
+            <input type="checkbox" id="${name}" onclick="selectedGenre('${name}')">
+            <br>
+            `
+        }
+        const name = genre.name.replace(' ', '-')
         return `
-        <label for="${genre.name}" class="filterLabel">${genre.name}</label>
-        <input type="checkbox" id="${genre.name}" onclick="selectedGenre('${genre.name}')">
+        <label for="${name}" class="filterLabel">${genre.name}</label>
+        <input type="checkbox" id="${name}" onclick="selectedGenre('${name}')">
         <br>
         `
     })
     element.innerHTML += genres.join('')
+}
+
+//BUG!!!
+//index reading twice, and value added 3 times after unchecked and checked again
+function selectedGenre(idName){
+    const button = document.querySelector(`#${idName}`)
+    button.addEventListener('change', function() {
+        const genreName = idName.toLowerCase()
+        if(this.checked) {
+            genresFilteredArr.push(genreName)
+            console.log(genresFilteredArr)
+        } else {
+            const index = genresFilteredArr.indexOf(genreName)
+            if(index < 0 || index >= genresFilteredArr.length) {
+                throw new Error(`ivalid index: ${index} => FIX THIS BUG`)
+            } 
+            genresFilteredArr.splice(index, 1)
+            console.log(`removed ${genreName}`)
+        }  
+    })
 }
 
 async function getPlatforms(element) {
@@ -88,13 +105,32 @@ async function getPlatforms(element) {
     .then(response => response.json())
     const platformsArr = request.results
     const platforms = platformsArr.map((plat) => {
+        const id = plat.id.toString()
         return `
-        <label for="${plat.name}" class="filterLabel">${plat.name}</label>
-        <input type="checkbox" id="${plat.name}">
+        <label for="plat${id}" class="filterLabel">${plat.name}</label>
+        <input type="checkbox" id="p${id}" onclick="selectedPlatform('p${id}','${id}', '${plat.name}')">
         <br>
         `
     })
     element.innerHTML += platforms.join('')
+}
+//BUG!!!
+//same bug as in selectedGenre()
+function selectedPlatform(buttonId, platId, platName) {
+    const button = document.querySelector(`#${buttonId}`)
+    button.addEventListener('change', function() {
+        if(this.checked) {
+            platformsFilteredArr.push(platId)
+            console.log(platformsFilteredArr)
+        } else {
+            const index = platformsFilteredArr.indexOf(platId)
+            if(index < 0 || index >= platformsFilteredArr.length) {
+                throw new Error(`ivalid index: ${index} => FIX THIS BUG`)
+            }
+            platformsFilteredArr.splice(index, 1)
+            console.log(`removed ${platName}: ${platId}`)
+        }
+    })
 }
 
 async function randomizer(element, id) {
@@ -116,21 +152,11 @@ async function randomizer(element, id) {
     `
     element.innerHTML += randomGame
 }
-        
-// async function searchGames(title) {
-//         const game = title
-//         const request = await fetch(`https://api.rawg.io/api/games?page_size=5&search=${game}&search_precise=true&key=e9a677462e984c02a2f1a9afab3493e2`)
-//         const response = await request.json()
-//         const searchedGames = response.results 
-//         console.log(searchedGames)
-// }
-// searchGames('halo')
     
 async function filteredSearch(element, genre, platforms, rating, release) {
     const request = await fetch(`https://api.rawg.io/api/games?genres=${genre}&platforms=${platforms}&metacritic=${rating},100&dates=${release}&key=e9a677462e984c02a2f1a9afab3493e2`)
     .then(response => response.json())
     const filtered = request.results
-    console.log(filtered)
     const filteredGames = filtered.map((game) => {
         const genres = game.genres.map((genre) => {
             return `<div id="genre">${genre.name}</div>`
@@ -154,4 +180,19 @@ async function filteredSearch(element, genre, platforms, rating, release) {
     element.innerHTML = ' '
     element.innerHTML += filteredGames
 }
-        
+
+let genresFilteredArr = []
+let platformsFilteredArr = []
+
+
+
+
+
+// async function searchGames(title) {
+//         const game = title
+//         const request = await fetch(`https://api.rawg.io/api/games?page_size=5&search=${game}&search_precise=true&key=e9a677462e984c02a2f1a9afab3493e2`)
+//         const response = await request.json()
+//         const searchedGames = response.results 
+//         console.log(searchedGames)
+// }
+// searchGames('halo')
