@@ -1,5 +1,7 @@
 const top4List = document.querySelector('#top4')
 const randomList = document.querySelector('#random')
+const searchBar = document.querySelector('#searchBar')
+const searchButton = document.querySelector('#searchButton')
 const genreFilter = document.querySelector('#genreFilter')
 const genreCheckbox = document.querySelector('#genreCheckbox')
 const platformFilter = document.querySelector('#platformFilter')
@@ -10,9 +12,17 @@ const filters = document.querySelector('#filters')
 const showFilters = document.querySelector('#showFilters')
 const randomizerButton = document.querySelector('#randomButton')
 const filterRandomButton = document.querySelector('#filterRandomButton')
+const left = document.querySelector("#leftArrow")
+const right = document.querySelector("#rightArrow")
+const darkButton = document.querySelector("#darkButton")
+const darkSwitch = document.querySelector("#darkSwitch")
+
+searchButton.addEventListener('click', function() {
+    const title = searchBar.value
+    getTitle(title)
+})
 
 function hideShow(button, element) {
-    console.log(button)
     button.addEventListener('change',function(){
         if (this.checked) {
             element.setAttribute("style","display:block") 
@@ -21,16 +31,31 @@ function hideShow(button, element) {
         }
     })
 }
-const left = document.getElementById("leftArrow")
-const right = document.getElementById("rightArrow")
-const darkButton = document.getElementById("darkButton")
-const darkSwitch = document.getElementById("darkSwitch")
 
-darkButton.addEventListener('click',darkMode) 
-
-function darkMode() {
-    darkSwitch.classList.add('dark')
+function scroll(direction) {
+    if(direction === 'left') {
+        left.addEventListener("mouseenter", function(){
+            idx = setInterval(() => randomList.scrollLeft -= 4, 08);
+        });
+        left.addEventListener("mouseleave", function(){
+            clearInterval(idx);
+        });
+    } else if(direction === 'right'){
+        right.addEventListener("mouseenter", function(){
+            idx = setInterval(() => randomList.scrollLeft += 4, 08);
+        });
+          
+        right.addEventListener("mouseleave", function(){
+            clearInterval(idx);
+        });
+    } else {
+        throw new Error ('invalid scroll input')
+    }
 }
+
+// function darkMode() {
+//     darkSwitch.classList.add('dark')
+// }
 
 hotGames(top4List)
 generalGames(randomList)
@@ -41,21 +66,8 @@ hideShow(showFilters, filters)
 hideShow(genreCheckbox, genreFilter)
 hideShow(platformCheckbox, platformFilter)
 
-left.addEventListener("mouseenter", function(){
-    idx = setInterval(() => randomList.scrollLeft -= 4, 08);
-});
-  
-left.addEventListener("mouseleave", function(){
-    clearInterval(idx);
-});
-  
-right.addEventListener("mouseenter", function(){
-    idx = setInterval(() => randomList.scrollLeft += 4, 08);
-});
-  
-right.addEventListener("mouseleave", function(){
-    clearInterval(idx);
-});
+scroll('left')
+scroll('right')
 
 randomizerButton.addEventListener('click',() => {
     randomList.innerHTML = ''
@@ -66,12 +78,22 @@ randomizerButton.addEventListener('click',() => {
 })
 
 filterRandomButton.addEventListener('click', () => {
+
+    let genreStr = genresFilteredArr.toString()
+    if(genreStr === '') {
+        genreStr = 'indie' //default value
+    }
+
+    let platformStr = platformsFilteredArr.toString()
+    if(platformStr === '') {
+        platformStr = '4' //default value (PC)
+    }
+
     const rating = ratingFilter.value 
 
     if(dateFilter.value === '') {
-        return filteredSearch(randomList, 'indie', '4', rating)
+        return filteredSearch(randomList, genreStr, platformStr, rating)
     }
-
     const release =  new Date(dateFilter.value).getTime()
     //1 day = 86400000ms || 1 month = 2592000000ms || 6 months = 15552000000ms
     const preReleaseISO = new Date(release - 15552000000).toISOString()
@@ -81,5 +103,7 @@ filterRandomButton.addEventListener('click', () => {
     const postRelease = postReleaseISO.replace('T00:00:00.000Z','')
     const releaseRange = `${preRelease},${postRelease}`
 
-    filteredSearch(randomList, 'indie', '4', rating, releaseRange)
+    filteredSearch(randomList, genreStr, platformStr, rating, releaseRange)
 })
+
+darkButton.addEventListener('click', () => darkSwitch.classList.add('dark')) 
