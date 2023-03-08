@@ -15,7 +15,7 @@ async function hotGames(element) { //add dynamically changing dates
 
         return `<div class="card bg-violet-500 rounded-lg" id="card">
             <img src="${game.background_image}" id="cardImg">
-            <div id="plat-genreContainer" class="flex flex-wrap">
+            <div id="plat-genreContainer" class="flex flex-wrap text-xs justify-center">
                 ${genres}
             </div>
             <div id="title">${game.name}</div>
@@ -44,7 +44,7 @@ async function generalGames(element) { //20 Popular Games
 
         return `<div class="card bg-violet-500 rounded-lg subpixel-antialiased" id="card">
             <img src="${game.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
-            <div id="plat-genreContainer" class="flex flex-wrap">
+            <div id="plat-genreContainer" class="flex flex-wrap text-xs justify-center">
                 ${genres}
             </div>
             <div id="title">${game.name}</div>
@@ -90,7 +90,7 @@ async function getPlatforms(element) {
     const platforms = platformsArr.map((plat) => {
         return `
         <label for="${plat.name}" class="filterLabel">${plat.name}</label>
-        <input type="checkbox" id="${plat.name}">
+        <input type="checkbox" id="${plat.name}" class="float-right">
         <br>
         `
     })
@@ -102,13 +102,13 @@ async function randomizer(element, id) {
     .then(response => response.json())
     
     const genres = request.genres.map((genre) => {
-        return `<div id="genre">${genre.name}</div>`
+        return `<div id="genre" class="flex flex-wrap text-xs justify-center">${genre.name}</div>`
     })
     
     const randomGame = `
-        <div class="card bg-violet-500" id="card">
+        <div class="card bg-violet-500 rounded-lg subpixel-antialiased" id="card">
             <img src="${request.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
-            <div id="plat-genreContainer" class="flex flex-wrap">
+            <div id="plat-genreContainer" class="flex flex-wrap text-xs justify-center">
                 ${genres}
             </div>
             <div id="title">${request.name}</div>
@@ -142,7 +142,7 @@ async function filteredSearch(element, genre, platforms, rating, release) {
         
         return `<div class="card" id="card">
             <img src="${game.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
-            <div id="plat-genreContainer" class="flex flex-wrap">
+            <div id="plat-genreContainer" class="flex flex-wrap text-xs justify-center">
                 ${genres}
             </div>
             <div id="title">${game.name}</div>

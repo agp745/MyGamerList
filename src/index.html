@@ -12,7 +12,7 @@
 
 <body class="bg-sky-50 dark:bg-slate-800">
 
-    <nav class="bg-yellow-300 dark:bg-violet-600 border-2 border-b-sky-500 border-t-0">
+    <nav class="bg-yellow-300 dark:bg-violet-600 border-2 border-b-sky-500 border-t-0 rounded-b-lg">
         <a href="" target="_blank" class="float-right">About Us</a>
         <a href="https://rawg.io/apidocs" target="_blank" class="float-right">API </a>
         <a href="https://github.com/agp745/MyGamerList" target="_blank" class="float-right"><img id="github" src="../assets/github.png"></a>
@@ -20,38 +20,43 @@
         <br>
         <label>Filter</label>
         <input type="checkbox" id="showFilters">
+        <button id="darkButton" class="float-right">Dark Mode</button>
         <!-- <div id="info" class="space-x-2 bg-red-400 text-right mr-2"> -->
             
         <!-- </div> -->
     </nav>
 
     <div id="wrapper" class="flex flex-row">
-        <section id="filters" class="flex flex-col bg-yellow-300 dark:bg-violet-600 hidden flex-initial p-5 overflow-y-scroll max-h-screen  border-2 border-r-sky-500 border-t-0 border-l-0">
-            <span class="filterTitle">Genre</span>
+        <section id="filters" class=" font-mono text-fuchsia-500 dark:text-green-600 flex-col rounded-r-xl bg-yellow-300 dark:bg-violet-600 hidden flex-initial p-12 overflow-y-scroll max-h-[85vw] border-2 border-r-sky-500 border-b-sky-500 border-t-0 border-l-0">
+            <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Genre</span>
             <input type="checkbox" id="genreCheckbox">
-            <div id="genreFilter">
+            <div id="genreFilter" class="text-left">
                 
             </div>
-
-            <span class="filterTitle">Platform</span>
-            <input type="checkbox" id="platformCheckbox">
-            <div id="platformFilter" class="mt-5 hidden">
-                <br>
+            <br>
+            <div>
+            <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Platform</span>
+           
+            <input type="checkbox" id="platformCheckbox" class="float-right">
+            <div id="platformFilter" class="mt-2 hidden">
             </div>
+            </div>
+                <br>
+            
 
             <div class="rating flex flex-col mt-5">
-                <span class="filterTitle">Rating</span>
-                <input type="number" id="ratingInput" class="rounded-full border-2 border-teal-500">
+                <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Rating</span>
+                <input type="number" id="ratingInput" class="rounded-none border-2 border-sk-500">
                 <!-- SCALE 75 + FIX POSITIONING (ALIGN LEFT) -->
             </div>
 
             <div class="release mt-5 mb-10">
-                <span class="filterTitle">Release</span>
-                <input type="date" id="dateInput">
+                <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Release</span>
+                <input type="date" id="dateInput" class="snap-center mr-80">
             </div>
         </section>
 
-        <button id="darkButton">Dark Mode</button>
+        
 
         <section class="flex flex-col overflow-hidden" id="gameList">
             <div class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">WHAT'S HOT?</div>
@@ -59,13 +64,15 @@
         
             <div class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">DISCOVER</div>
         
-            <div id="random" class=" flex space-x-1 overflow-hidden mx-32 p-3 border-2 rounded-3xl bg-slate-500"></div>
-            <div class="directionalButtons text-center">
-                <button id ="leftArrow" class="leftArrow bg-yellow-300 border-2 items-center rounded-full border-double self-center ">Left</button> 
-                <button id ="rightArrow" class="rightArrow bg-yellow-300 border-2 items-center rounded-full border-double self-center">Right</button>
+            <div id="random" class=" flex space-x-1 overflow-hidden mx-32 p-3 border-2 rounded-3xl bg-slate-500 shadow-2xl shadow-violet-700"></div>
+            <div class="directionalButtons text-center mt-3">
+                <button id ="leftArrow" class="leftArrow bg-yellow-300 border-2 items-center rounded-full border-double self-center hover:bg-yellow-500">L</button> 
+                <button id ="rightArrow" class="rightArrow bg-yellow-300 border-2 items-center rounded-full border-double self-center hover:bg-yellow-500">R</button>
             </div>
-            <button id="randomButton" class="rounded-full bg-yellow-300 border-blue-800 border-2 items-center border-double self-center px-.5 mt-5">Randomize</button>
-            <button id="filterRandomButton">Randomize by filter</button>
+            <div class ="discoverButtons justify-center items-center text-center" id="discoverButtons">
+            <button id="randomButton" class="rounded-full bg-yellow-300 border-black border-2 items-center self-center mt-5 ml-12 p-1 hover:bg-yellow-500 active:bg-yellow-600">Randomize</button>
+            <button id="filterRandomButton" class="rounded-full bg-yellow-300 border-black border-2 items-center self-center mt-5 ml-1 p-1 hover:bg-yellow-500 active:bg-yellow-600">Randomize by filter</button>
+            </div>
         </section>
     </div>
 
