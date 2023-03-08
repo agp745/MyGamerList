@@ -13,7 +13,7 @@ async function hotGames(element) { //add dynamically changing dates
             return `<div id="platforms">${plat.platform.name}</div>`
         })
 
-        return `<div class="card" id="card">
+        return `<div class="card bg-violet-500 rounded-lg" id="card">
             <img src="${game.background_image}" id="cardImg">
             <div id="plat-genreContainer" class="flex flex-wrap">
                 ${genres}
@@ -42,7 +42,7 @@ async function generalGames(element) { //20 Popular Games
             return `<div id="platforms">${plat.platform.name}</div>`
         })
 
-        return `<div class="card" id="card">
+        return `<div class="card bg-violet-500 rounded-lg subpixel-antialiased" id="card">
             <img src="${game.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
             <div id="plat-genreContainer" class="flex flex-wrap">
                 ${genres}
@@ -106,13 +106,13 @@ async function randomizer(element, id) {
     })
     
     const randomGame = `
-    <div class="card" id="card">
-        <img src="${request.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
-        <div id="plat-genreContainer" class="flex flex-wrap">
-            ${genres}
+        <div class="card bg-violet-500" id="card">
+            <img src="${request.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
+            <div id="plat-genreContainer" class="flex flex-wrap">
+                ${genres}
+            </div>
+            <div id="title">${request.name}</div>
         </div>
-        <div id="title">${request.name}</div>
-    </div>
     `
     element.innerHTML += randomGame
 }

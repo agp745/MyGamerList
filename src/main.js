@@ -12,6 +12,7 @@ const randomizerButton = document.querySelector('#randomButton')
 const filterRandomButton = document.querySelector('#filterRandomButton')
 
 function hideShow(button, element) {
+    console.log(button)
     button.addEventListener('change',function(){
         if (this.checked) {
             element.setAttribute("style","display:block") 
@@ -19,6 +20,16 @@ function hideShow(button, element) {
             element.setAttribute("style","display:none")
         }
     })
+}
+const left = document.getElementById("leftArrow")
+const right = document.getElementById("rightArrow")
+const darkButton = document.getElementById("darkButton")
+const darkSwitch = document.getElementById("darkSwitch")
+
+darkButton.addEventListener('click',darkMode) 
+
+function darkMode() {
+    darkSwitch.classList.add('dark')
 }
 
 hotGames(top4List)
@@ -30,7 +41,22 @@ hideShow(showFilters, filters)
 hideShow(genreCheckbox, genreFilter)
 hideShow(platformCheckbox, platformFilter)
 
-//Add filter to show games with atleast 1 review
+left.addEventListener("mouseenter", function(){
+    idx = setInterval(() => randomList.scrollLeft -= 4, 08);
+});
+  
+left.addEventListener("mouseleave", function(){
+    clearInterval(idx);
+});
+  
+right.addEventListener("mouseenter", function(){
+    idx = setInterval(() => randomList.scrollLeft += 4, 08);
+});
+  
+right.addEventListener("mouseleave", function(){
+    clearInterval(idx);
+});
+
 randomizerButton.addEventListener('click',() => {
     randomList.innerHTML = ''
     for(let i = 0; i < 20; i++) {

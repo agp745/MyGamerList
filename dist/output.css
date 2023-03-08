@@ -526,6 +526,10 @@ video {
   margin-bottom: 2.5rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -615,8 +619,16 @@ video {
   overflow-y: scroll;
 }
 
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
 .rounded-full {
   border-radius: 9999px;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
 }
 
 .rounded-sm {
@@ -625,6 +637,14 @@ video {
 
 .border-2 {
   border-width: 2px;
+}
+
+.border-l-0 {
+  border-left-width: 0px;
+}
+
+.border-t-0 {
+  border-top-width: 0px;
 }
 
 .border-double {
@@ -651,9 +671,24 @@ video {
   border-color: rgb(253 224 71 / var(--tw-border-opacity));
 }
 
-.bg-blue-400 {
+.border-yellow-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(253 224 71 / var(--tw-border-opacity));
+}
+
+.border-b-sky-500 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(14 165 233 / var(--tw-border-opacity));
+}
+
+.border-r-sky-500 {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(14 165 233 / var(--tw-border-opacity));
+}
+
+.bg-red-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
 .bg-red-300 {
@@ -666,9 +701,29 @@ video {
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
-.bg-teal-400 {
+.bg-sky-50 {
   --tw-bg-opacity: 1;
-  background-color: rgb(45 212 191 / var(--tw-bg-opacity));
+  background-color: rgb(240 249 255 / var(--tw-bg-opacity));
+}
+
+.bg-slate-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.bg-violet-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(139 92 246 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 224 71 / var(--tw-bg-opacity));
+}
+
+.bg-purple-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(216 180 254 / var(--tw-bg-opacity));
 }
 
 .bg-purple-300 {
@@ -696,6 +751,9 @@ video {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -711,6 +769,49 @@ body {
 
 #random {
   gap: 1rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-fuchsia-500 {
+  --tw-text-opacity: 1;
+  color: rgb(217 70 239 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
+}
+
+.decoration-double {
+  text-decoration-style: double;
+}
+
+.subpixel-antialiased {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+body {
+  overflow-y: hidden;
+  overflow-y:scroll
+}
+
+#top4 {
+  gap: 1rem;
+}
+
+#random {
+  gap: 1rem;
+}
+
+#random:hover {
+  overflow-x:scroll
 }
 
 .filterTitle {
@@ -729,19 +830,28 @@ body {
   max-width: 10px;
 }
 
+/* FIX POSITIONING */
+
+#github {
+  max-width: 10px;
+}
+
 #cardImg {
-  max-width: 10rem;
+  width: 100%;
+  height: 10vw;
   overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* #genre {
-    border:3px solid blue;
-    font-style: italic;
-    border-radius: 25px;
-    background: chocolate;
-    text-align: center;
-    font-size: x-large;
-    transform:scale(50%)
+      border:3px solid blue;
+      font-style: italic;
+      border-radius: 25px;
+      background: chocolate;
+      text-align: center;
+      font-size: x-large;
+      transform:scale(50%)
 } */
 
 #title {
@@ -757,10 +867,67 @@ body {
     background: chocolate
 } */
 
+#carousel {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+  overflow-x: scroll;
+  justify-content: center;
+}
+
 #card {
-  background-color: cyan;
   border: 3px;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
   max-width: 10rem;
+  max-width: 10rem;
+  flex: 0 0 calc(33.33% - 20px);
+  transition: transform 0.5s ease;
+  overflow:hidden
+}
+
+.dark .dark\:bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-slate-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-green-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 128 61 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-green-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-violet-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(91 33 182 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-violet-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(109 40 217 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-violet-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(124 58 237 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
 }
