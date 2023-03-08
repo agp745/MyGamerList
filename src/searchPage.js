@@ -1,6 +1,9 @@
 const searchedGame = document.querySelector('#searchedGame')
 const moreGamesButton = document.querySelector('#moreGamesButton')
-const moreLikeThis = document.querySelector('#moreLikeThis')
+const moreLikeThisList = document.querySelector('#moreLikeThis')
 
+getSearchedGame(searchedGame, 'Halo 2')
 
-gameSearch(searchedGame, '695743')
+moreGamesButton.addEventListener('click', () => {
+    moreLikeThis(moreLikeThisList, 'halo-2-anniversary', 'action, shooter')
+})

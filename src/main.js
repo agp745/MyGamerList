@@ -1,5 +1,7 @@
 const top4List = document.querySelector('#top4')
 const randomList = document.querySelector('#random')
+const searchBar = document.querySelector('#searchBar')
+const searchButton = document.querySelector('#searchButton')
 const genreFilter = document.querySelector('#genreFilter')
 const genreCheckbox = document.querySelector('#genreCheckbox')
 const platformFilter = document.querySelector('#platformFilter')
@@ -15,7 +17,10 @@ const right = document.querySelector("#rightArrow")
 const darkButton = document.querySelector("#darkButton")
 const darkSwitch = document.querySelector("#darkSwitch")
 
-
+searchButton.addEventListener('click', function() {
+    const title = searchBar.value
+    getTitle(title)
+})
 
 function hideShow(button, element) {
     button.addEventListener('change',function(){

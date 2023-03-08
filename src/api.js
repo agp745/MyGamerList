@@ -181,7 +181,17 @@ async function filteredSearch(element, genre, platforms, rating, release) {
     element.innerHTML += filteredGames
 }
 
+async function getSearchedGame(element, searchTitle){
+    const title = searchTitle.replace(' ', '-')
+    const titleRequest = await fetch(`https://api.rawg.io/api/games?search=${title}&search_precise=true&page_size=1&key=e9a677462e984c02a2f1a9afab3493e2`)
+    .then(response => response.json())
+    const gameId = titleRequest.results.map((game) => game.id.toString()).toString()
+    gameSearch(element, gameId)
+}
+
+//retrieve id and pass to more like this function
 async function gameSearch(element, id) {
+
     const request = await fetch(`https://api.rawg.io/api/games/${id}?key=e9a677462e984c02a2f1a9afab3493e2`)
     .then(response => response.json())
     console.log(request)
@@ -206,19 +216,25 @@ async function gameSearch(element, id) {
     element.innerHTML = game
 }
 
+//add element
+//add more to card?
+//add feature which does not return same game (id from game SearcH)
+async function moreLikeThis(element, title, genre) {
+    const request = await fetch(`https://api.rawg.io/api/games?search=${title}&search_precise=true&genres=${genre}&page_size=5&key=e9a677462e984c02a2f1a9afab3493e2`)
+    .then(response => response.json())
+    const gamesArr = request.results
+    console.log(gamesArr)
+
+    const relatedgames = gamesArr.map((game) => {
+        return `
+            <section id="moreCards" class="flex">
+                <img id="relatedGameImage" src="${game.background_image}">
+                <div id="relatedTitle">${game.name}</div>
+            </section>
+        `
+    })
+    element.innerHTML += relatedgames
+}
 
 let genresFilteredArr = []
 let platformsFilteredArr = []
-
-
-
-
-
-// async function searchGames(title) {
-//         const game = title
-//         const request = await fetch(`https://api.rawg.io/api/games?page_size=5&search=${game}&search_precise=true&key=e9a677462e984c02a2f1a9afab3493e2`)
-//         const response = await request.json()
-//         const searchedGames = response.results 
-//         console.log(searchedGames)
-// }
-// searchGames('halo')
