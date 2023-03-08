@@ -15,6 +15,8 @@ const right = document.querySelector("#rightArrow")
 const darkButton = document.querySelector("#darkButton")
 const darkSwitch = document.querySelector("#darkSwitch")
 
+
+
 function hideShow(button, element) {
     button.addEventListener('change',function(){
         if (this.checked) {
