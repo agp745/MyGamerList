@@ -10,9 +10,12 @@ const filters = document.querySelector('#filters')
 const showFilters = document.querySelector('#showFilters')
 const randomizerButton = document.querySelector('#randomButton')
 const filterRandomButton = document.querySelector('#filterRandomButton')
+const left = document.querySelector("#leftArrow")
+const right = document.querySelector("#rightArrow")
+const darkButton = document.querySelector("#darkButton")
+const darkSwitch = document.querySelector("#darkSwitch")
 
 function hideShow(button, element) {
-    console.log(button)
     button.addEventListener('change',function(){
         if (this.checked) {
             element.setAttribute("style","display:block") 
@@ -21,16 +24,31 @@ function hideShow(button, element) {
         }
     })
 }
-const left = document.getElementById("leftArrow")
-const right = document.getElementById("rightArrow")
-const darkButton = document.getElementById("darkButton")
-const darkSwitch = document.getElementById("darkSwitch")
 
-darkButton.addEventListener('click',darkMode) 
-
-function darkMode() {
-    darkSwitch.classList.add('dark')
+function scroll(direction) {
+    if(direction === 'left') {
+        left.addEventListener("mouseenter", function(){
+            idx = setInterval(() => randomList.scrollLeft -= 4, 08);
+        });
+        left.addEventListener("mouseleave", function(){
+            clearInterval(idx);
+        });
+    } else if(direction === 'right'){
+        right.addEventListener("mouseenter", function(){
+            idx = setInterval(() => randomList.scrollLeft += 4, 08);
+        });
+          
+        right.addEventListener("mouseleave", function(){
+            clearInterval(idx);
+        });
+    } else {
+        throw new Error ('invalid scroll input')
+    }
 }
+
+// function darkMode() {
+//     darkSwitch.classList.add('dark')
+// }
 
 hotGames(top4List)
 generalGames(randomList)
@@ -41,21 +59,8 @@ hideShow(showFilters, filters)
 hideShow(genreCheckbox, genreFilter)
 hideShow(platformCheckbox, platformFilter)
 
-left.addEventListener("mouseenter", function(){
-    idx = setInterval(() => randomList.scrollLeft -= 4, 08);
-});
-  
-left.addEventListener("mouseleave", function(){
-    clearInterval(idx);
-});
-  
-right.addEventListener("mouseenter", function(){
-    idx = setInterval(() => randomList.scrollLeft += 4, 08);
-});
-  
-right.addEventListener("mouseleave", function(){
-    clearInterval(idx);
-});
+scroll('left')
+scroll('right')
 
 randomizerButton.addEventListener('click',() => {
     randomList.innerHTML = ''
@@ -83,3 +88,5 @@ filterRandomButton.addEventListener('click', () => {
 
     filteredSearch(randomList, 'indie', '4', rating, releaseRange)
 })
+
+darkButton.addEventListener('click', () => darkSwitch.classList.add('dark')) 
