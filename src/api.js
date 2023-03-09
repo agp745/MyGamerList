@@ -13,13 +13,13 @@ async function hotGames(element) { //add dynamically changing dates
             return `<div id="platforms">${plat.platform.name}</div>`
         })
 
-        return `<div class="card bg-violet-500 rounded-lg" id="card">
-            <img src="${game.background_image}" id="cardImg">
-            <div id="plat-genreContainer" class="flex flex-wrap text-xs justify-center">
+        return `<div class="card bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-110" id="card">
+            <img src="${game.background_image}" id="cardImg" class="aspect-auto max-w-lg min-h-fit">
+            <div id="plat-genreContainer" class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">
                 ${genres}
             </div>
-            <div id="title">${game.name}</div>
-            <div id="plat-genreContainer" class="flex flex-wrap">
+            <div id="title" class="italic text-lg font-bold font-mono subpixel-antialiased shadow-xl shadow-violet-600">${game.name}</div>
+            <div id="plat-genreContainer" class="flex flex-wrap font-sans text-sm justify-center font-medium relative top-5">
                 ${parentPlatforms}
             </div>
         </div>`
@@ -42,13 +42,15 @@ async function generalGames(element) {
             return `<div id="platforms">${plat.platform.name}</div>`
         })
 
-        return `<div class="card bg-violet-500 rounded-lg subpixel-antialiased" id="card">
+        return `<div class="card bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-110" id="card">
             <img src="${game.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
-            <div id="plat-genreContainer" class="flex flex-wrap text-xs justify-center">
+            <div id="plat-genreContainer" class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">
                 ${genres}
             </div>
-            <div id="title">${game.name}</div>
-            <div id="platformContainer" class="flex flex-wrap">
+            <br>
+            <div id="title" class="italic text-lg font-bold font-mono subpixel-antialiased shadow-xl shadow-violet-600">${game.name}</div>
+            <br>
+            <div id="platformContainer" class="flex flex-wrap font-sans text-sm justify-center font-medium relative top-5">
             ${parentPlatforms}
             </div>
         </div>`
@@ -142,12 +144,12 @@ async function randomizer(element, id) {
     })
     
     const randomGame = `
-        <div class="card bg-violet-500 rounded-lg subpixel-antialiased" id="card">
+        <div class="card bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-110" id="card">
             <img src="${request.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
-            <div id="plat-genreContainer" class="flex flex-wrap text-xs justify-center">
+            <div id="plat-genreContainer" class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">
                 ${genres}
             </div>
-            <div id="title">${request.name}</div>
+            <div id="title" class="italic text-lg font-bold font-mono subpixel-antialiased shadow-xl shadow-violet-600">${request.name}</div>
         </div>
     `
     element.innerHTML += randomGame
@@ -166,13 +168,13 @@ async function filteredSearch(element, genre, platforms, rating, release) {
             return `<div id="platforms">${plat.platform.name}</div>`
         })
         
-        return `<div class="card" id="card">
+        return `<div class="card bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-110" id="card">
             <img src="${game.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
-            <div id="plat-genreContainer" class="flex flex-wrap text-xs justify-center">
+            <div id="plat-genreContainer" class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">
                 ${genres}
             </div>
             <div id="title">${game.name}</div>
-            <div id="platformContainer" class="flex flex-wrap">
+            <div id="platformContainer" class="flex flex-wrap font-sans text-sm justify-center font-medium relative top-5">
             ${parentPlatforms}
             </div>
         </div>`
@@ -205,12 +207,12 @@ async function gameSearch(element, id) {
     })
 
     const game = `
-        <div id="searchedCard">
-            <img id="searchedImage" src="${request.background_image}">
+        <div id="searchedCard" class="bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-110">
+            <img id="searchedImage" src="${request.background_image}" class="aspect-auto max-w-lg min-h-fit">
             <div id="searchedTitlie">${request.name}</div>
-            ${genres}
+            <div id="searchedGenre class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">${genres}</div>
             <div id="searchedDescription">${request.description}</div>
-            ${platforms}
+            <div id="searchedPlatforms" class="flex flex-wrap font-sans text-sm justify-center font-medium relative top-5">${platforms}</div>
         </div>
     `
     element.innerHTML = game

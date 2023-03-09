@@ -26,24 +26,29 @@
         <!-- </div> -->
     </nav>
 
-    <section id="search">
-        <label for="searchBar">Search:</label>
-        <input type="text" id="searchBar">
-        <a href="../src/searchPage.html" target="_blank"><button id="searchButton">submit</button></a>
-    </section>
+    
 
     <div id="wrapper" class="flex flex-row">
         <section id="filters" class=" font-mono text-fuchsia-500 dark:text-green-600 flex-col rounded-r-xl bg-yellow-300 dark:bg-violet-600 hidden flex-initial p-12 overflow-y-scroll max-h-[85vw] border-2 border-r-sky-500 border-b-sky-500 border-t-0 border-l-0">
+            <section id="search" class="flex flex-col">
+                <label for="searchBar" class="font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Search:</label>
+                <input type="text" id="searchBar" class="rounded-none border-2 border-sky-500">
+                <br>
+                <a href="../src/searchPage.html" target="_blank"><button id="searchButton" class="font-bold text-md border-2 border-black hover:bg-yellow-500">submit</button></a>
+            </section>
+            <br>
             <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Genre</span>
             <input type="checkbox" id="genreCheckbox">
             <div id="genreFilter" class="text-left hidden">
                 
             </div>
             <br>
+            <br>
+            <br>
             <div>
             <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Platform</span>
            
-            <input type="checkbox" id="platformCheckbox" class="float-right">
+            <input type="checkbox" id="platformCheckbox" class="">
             <div id="platformFilter" class="mt-2 hidden">
             </div>
             </div>
