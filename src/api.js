@@ -247,7 +247,7 @@ async function moreLikeThis(element) {
     element.innerHTML = ''
     discoverTitle.innerHTML = `Games like ${title}`
 
-    const request = await fetch(`https://api.rawg.io/api/games?search=${slug}&search_precise=true&genres=${genre}&page_size=6&key=e9a677462e984c02a2f1a9afab3493e2`)
+    const request = await fetch(`https://api.rawg.io/api/games?search=${slug}&search_precise=true&genres=${genre}&page_size=6&exclude_additions=true&key=e9a677462e984c02a2f1a9afab3493e2`)
     .then(response => response.json())
     const gamesArr = request.results
 
