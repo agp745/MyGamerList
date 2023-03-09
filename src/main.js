@@ -1,7 +1,7 @@
 const top4List = document.querySelector('#top4')
 const randomList = document.querySelector('#random')
-const searchBar = document.querySelector('#searchBar')
-const searchButton = document.querySelector('#searchButton')
+export const searchBar = document.querySelector('#searchBar')
+export const searchButton = document.querySelector('#searchButton')
 const genreFilter = document.querySelector('#genreFilter')
 const genreCheckbox = document.querySelector('#genreCheckbox')
 const platformFilter = document.querySelector('#platformFilter')
@@ -17,11 +17,6 @@ const right = document.querySelector("#rightArrow")
 const darkButton = document.querySelector("#darkButton")
 const darkSwitch = document.querySelector("#darkSwitch")
 
-searchButton.addEventListener('click', function() {
-    const title = searchBar.value
-    getTitle(title)
-})
-
 function hideShow(button, element) {
     button.addEventListener('change',function(){
         if (this.checked) {
@@ -33,16 +28,17 @@ function hideShow(button, element) {
 }
 
 function scroll(direction) {
+    let idx = null
     if(direction === 'left') {
         left.addEventListener("mouseenter", function(){
-            idx = setInterval(() => randomList.scrollLeft -= 4, 08);
+            idx = setInterval(() => randomList.scrollLeft -= 4, 8);
         });
         left.addEventListener("mouseleave", function(){
             clearInterval(idx);
         });
     } else if(direction === 'right'){
         right.addEventListener("mouseenter", function(){
-            idx = setInterval(() => randomList.scrollLeft += 4, 08);
+            idx = setInterval(() => randomList.scrollLeft += 4, 8);
         });
           
         right.addEventListener("mouseleave", function(){
