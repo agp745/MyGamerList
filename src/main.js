@@ -18,6 +18,7 @@ const left = document.querySelector("#leftArrow")
 const right = document.querySelector("#rightArrow")
 const darkButton = document.querySelector("#darkButton")
 const darkSwitch = document.querySelector("#darkSwitch")
+const body = document.querySelector("#body")
 
 function hideShow(button, element) {
     button.addEventListener('change',function(){
@@ -51,9 +52,11 @@ function scroll(direction) {
     }
 }
 
-// function darkMode() {
-//     darkSwitch.classList.add('dark')
-// }
+function darkMode() {
+    darkSwitch.classList.add('dark')
+    body.setAttribute("style","background-image:url()")
+    body.setAttribute("style","background-image:url(../assets/bg-night.gif)")
+}
 
 hotGames(top4List)
 generalGames(randomList)
@@ -112,4 +115,4 @@ filterRandomButton.addEventListener('click', () => {
     filteredSearch(randomList, genreStr, platformStr, rating, releaseRange)
 })
 
-darkButton.addEventListener('click', () => darkSwitch.classList.add('dark')) 
+darkButton.addEventListener('click', darkMode)

@@ -5,7 +5,25 @@
 body {
     overflow-y: hidden;
     overflow-y:scroll
+    
 }
+
+body::before{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-image: 
+      linear-gradient(115deg, rgba(240, 249, 255, 0.2),
+        rgba(240, 249, 255, 0.2)),
+      url(../assets/bg-day.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
 #top4 {
     gap: 1rem; 

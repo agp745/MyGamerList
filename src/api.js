@@ -4,7 +4,7 @@ async function hotGames(element) {
     const fourMonthsBack = new Date(today - 10368000000).toISOString().slice(0, 10)
     const todayISO = new Date(today).toISOString().slice(0, 10)
 
-    const request = await fetch(`https://api.rawg.io/api/games?page_size=4&dates=${fourMonthsBack},${todayISO}&metacritic=85,100&search_precise=true&key=e9a677462e984c02a2f1a9afab3493e2`)
+    const request = await fetch(`https://api.rawg.io/api/games?page_size=4&dates=${fourMonthsBack},${todayISO}&metacritic=85,100&search_precise=true&key=2f3ca7722ac84966acbe5a925e535d09`)
     .then(response => response.json())
     const top4 = request.results
 
@@ -37,7 +37,7 @@ async function hotGames(element) {
 }
 
 async function generalGames(element) {
-    const request = await fetch('https://api.rawg.io/api/games?key=e9a677462e984c02a2f1a9afab3493e2')
+    const request = await fetch('https://api.rawg.io/api/games?key=2f3ca7722ac84966acbe5a925e535d09')
     .then(response => response.json())
     const general = request.results
     const games = await general.map((game) => {
@@ -71,7 +71,7 @@ async function generalGames(element) {
 }
 
 async function getGenres(element) {
-    const request = await fetch('https://api.rawg.io/api/genres?key=e9a677462e984c02a2f1a9afab3493e2')
+    const request = await fetch('https://api.rawg.io/api/genres?key=2f3ca7722ac84966acbe5a925e535d09')
     .then(response => response.json())
     const genresArr = request.results
     const genres = genresArr.map((genre) =>{
@@ -114,7 +114,7 @@ function selectedGenre(idName){
 }
 
 async function getPlatforms(element) {
-    const request = await fetch('https://api.rawg.io/api/platforms?key=e9a677462e984c02a2f1a9afab3493e2')
+    const request = await fetch('https://api.rawg.io/api/platforms?key=2f3ca7722ac84966acbe5a925e535d09')
     .then(response => response.json())
     const platformsArr = request.results
     const platforms = platformsArr.map((plat) => {
@@ -148,7 +148,7 @@ function selectedPlatform(buttonId, platId, platName) {
 }
 
 async function randomizer(element, id) {
-    const request = await fetch(`https://api.rawg.io/api/games/${id}?key=e9a677462e984c02a2f1a9afab3493e2`)
+    const request = await fetch(`https://api.rawg.io/api/games/${id}?key=2f3ca7722ac84966acbe5a925e535d09`)
     .then(response => response.json())
     
     const genres = request.genres.map((genre) => {
@@ -170,7 +170,7 @@ async function randomizer(element, id) {
 }
     
 async function filteredSearch(element, genre, platforms, rating, release) {
-    const request = await fetch(`https://api.rawg.io/api/games?genres=${genre}&platforms=${platforms}&metacritic=${rating},100&dates=${release}&key=e9a677462e984c02a2f1a9afab3493e2`)
+    const request = await fetch(`https://api.rawg.io/api/games?genres=${genre}&platforms=${platforms}&metacritic=${rating},100&dates=${release}&key=2f3ca7722ac84966acbe5a925e535d09`)
     .then(response => response.json())
     const filtered = request.results
     const filteredGames = filtered.map((game) => {
@@ -204,7 +204,7 @@ async function getSearchedGame(element, searchTitle){
     top4Title.innerHTML = searchTitle
     const title = searchTitle.toLowerCase().replace(' ', '-')
     console.log(title)
-    const titleRequest = await fetch(`https://api.rawg.io/api/games?search=${title}&search_precise=true&page_size=1&key=e9a677462e984c02a2f1a9afab3493e2`)
+    const titleRequest = await fetch(`https://api.rawg.io/api/games?search=${title}&search_precise=true&page_size=1&key=2f3ca7722ac84966acbe5a925e535d09`)
     .then(response => response.json())
     const gameId = titleRequest.results.map((game) => game.id.toString()).toString()
     gameSearch(element, gameId)
@@ -212,7 +212,7 @@ async function getSearchedGame(element, searchTitle){
 
 async function gameSearch(element, id) {
 
-    const request = await fetch(`https://api.rawg.io/api/games/${id}?key=e9a677462e984c02a2f1a9afab3493e2`)
+    const request = await fetch(`https://api.rawg.io/api/games/${id}?key=2f3ca7722ac84966acbe5a925e535d09`)
     .then(response => response.json())
     console.log(request)
 
@@ -248,7 +248,7 @@ async function moreLikeThis(element) {
     element.innerHTML = ''
     discoverTitle.innerHTML = `Games like ${title}`
 
-    const request = await fetch(`https://api.rawg.io/api/games?search=${slug}&search_precise=true&genres=${genre}&page_size=6&exclude_additions=true&key=e9a677462e984c02a2f1a9afab3493e2`)
+    const request = await fetch(`https://api.rawg.io/api/games?search=${slug}&search_precise=true&genres=${genre}&page_size=6&exclude_additions=true&key=2f3ca7722ac84966acbe5a925e535d09`)
     .then(response => response.json())
     const gamesArr = request.results
 
