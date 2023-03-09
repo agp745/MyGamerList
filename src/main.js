@@ -19,17 +19,6 @@ const right = document.querySelector("#rightArrow")
 const darkButton = document.querySelector("#darkButton")
 const darkSwitch = document.querySelector("#darkSwitch")
 
-console.log(searchBar)
-console.log(searchButton)
-
-searchButton.addEventListener('click', () => {
-    const title = searchBar.value
-    top4Title.innerHTML = title
-    const titleSlug = title.toLowerCase().replace(' ', '-')
-    getSearchedGame(top4List, titleSlug)
-})
-
-
 function hideShow(button, element) {
     button.addEventListener('change',function(){
         if (this.checked) {
@@ -78,8 +67,14 @@ hideShow(platformCheckbox, platformFilter)
 scroll('left')
 scroll('right')
 
+searchButton.addEventListener('click', () => {
+    const title = searchBar.value
+    getSearchedGame(top4List, title)
+})
+
 randomizerButton.addEventListener('click',() => {
     randomList.innerHTML = ''
+    discoverTitle.innerHTML = 'Discover'
     for(let i = 0; i < 20; i++) {
         let randomInt = Math.floor(Math.random() * 900000)
         randomizer(randomList, randomInt)
@@ -87,6 +82,8 @@ randomizerButton.addEventListener('click',() => {
 })
 
 filterRandomButton.addEventListener('click', () => {
+    randomList.innerHTML = ''
+    discoverTitle.innerHTML = 'Discover'
 
     let genreStr = genresFilteredArr.toString()
     if(genreStr === '') {
