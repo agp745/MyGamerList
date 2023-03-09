@@ -29,7 +29,7 @@
     <section id="search">
         <label for="searchBar">Search:</label>
         <input type="text" id="searchBar">
-        <a href="../src/searchPage.html" target="_blank"><button id="searchButton">submit</button></a>
+        <button id="searchButton">submit</button>
     </section>
 
     <div id="wrapper" class="flex flex-row">
@@ -65,10 +65,10 @@
         
 
         <section class="flex flex-col overflow-hidden" id="gameList">
-            <div class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">WHAT'S HOT?</div>
+            <div id="hotGamesTitle" class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">WHAT'S HOT?</div>
             <div id="top4" class="flex justify-center mb-10"></div>
         
-            <div class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">DISCOVER</div>
+            <div id="discoverTitle" class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">DISCOVER</div>
         
             <div id="random" class=" flex space-x-1 overflow-hidden mx-32 p-3 border-2 rounded-3xl bg-slate-500 shadow-2xl shadow-violet-700"></div>
             <div class="directionalButtons text-center mt-3">
@@ -85,7 +85,7 @@
     
     <script src="idLists.js"></script>
     <script src="api.js"></script>
-    <script type="module" src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

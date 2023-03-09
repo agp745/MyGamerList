@@ -178,7 +178,7 @@ async function filteredSearch(element, genre, platforms, rating, release) {
         </div>`
     })
     element.innerHTML = ' '
-    element.innerHTML += filteredGames
+    element.innerHTML += filteredGames.join('')
 }
 
 async function getSearchedGame(element, searchTitle){
@@ -212,6 +212,7 @@ async function gameSearch(element, id) {
             <div id="searchedGenres">${genres}</div>
             <div id="searchedDescription">${request.description}</div>
             ${platforms}
+            <button id="moreGamesButton" onclick="moreLikeThis(randomList)">More Games like this</button>
         </div>
     `
     element.innerHTML = game
@@ -219,8 +220,13 @@ async function gameSearch(element, id) {
 
 //add more to card?
 async function moreLikeThis(element) {
+    
     const slug = document.querySelector('#searchedSlug').innerHTML
     const genre = document.querySelector('#genre').innerHTML.toLowerCase().replace(' ', '-')
+    const title = document.querySelector('#searchedTitle').innerHTML
+
+    element.innerHTML = ''
+    discoverTitle.innerHTML = `Games like ${title}`
 
     const request = await fetch(`https://api.rawg.io/api/games?search=${slug}&search_precise=true&genres=${genre}&page_size=6&key=e9a677462e984c02a2f1a9afab3493e2`)
     .then(response => response.json())
@@ -238,7 +244,7 @@ async function moreLikeThis(element) {
             </section>
         `
     })
-    element.innerHTML += relatedgames
+    element.innerHTML += relatedgames.join('')
     
 }
 

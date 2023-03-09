@@ -1,7 +1,9 @@
 const top4List = document.querySelector('#top4')
+const top4Title = document.querySelector('#hotGamesTitle')
 const randomList = document.querySelector('#random')
-export const searchBar = document.querySelector('#searchBar')
-export const searchButton = document.querySelector('#searchButton')
+const discoverTitle = document.querySelector('#discoverTitle')
+const searchBar = document.querySelector('#searchBar')
+const searchButton = document.querySelector('#searchButton')
 const genreFilter = document.querySelector('#genreFilter')
 const genreCheckbox = document.querySelector('#genreCheckbox')
 const platformFilter = document.querySelector('#platformFilter')
@@ -16,6 +18,17 @@ const left = document.querySelector("#leftArrow")
 const right = document.querySelector("#rightArrow")
 const darkButton = document.querySelector("#darkButton")
 const darkSwitch = document.querySelector("#darkSwitch")
+
+console.log(searchBar)
+console.log(searchButton)
+
+searchButton.addEventListener('click', () => {
+    const title = searchBar.value
+    top4Title.innerHTML = title
+    const titleSlug = title.toLowerCase().replace(' ', '-')
+    getSearchedGame(top4List, titleSlug)
+})
+
 
 function hideShow(button, element) {
     button.addEventListener('change',function(){
