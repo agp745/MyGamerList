@@ -173,8 +173,8 @@ async function filteredSearch(element, genre, platforms, rating, release) {
             <div id="plat-genreContainer" class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">
                 ${genres}
             </div>
-            <div id="title">${game.name}</div>
-            <div id="platformContainer" class="flex flex-wrap font-sans text-sm justify-center font-medium relative top-5">
+            <div id="title" class="text-center italic text-lg font-bold font-mono subpixel-antialiased shadow-xl shadow-violet-600">${game.name}</div>
+            <div id="platformContainer" class="text-center flex flex-wrap font-sans text-sm justify-center font-medium relative top-5">
             ${parentPlatforms}
             </div>
         </div>`
@@ -206,17 +206,18 @@ async function gameSearch(element, id) {
         return `<div id="platforms">${plat.platform.name}</div>`
     })
 
-    const game = `
-        <div id="searchedCard" class="bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-110">
-            <img id="searchedImage" src="${request.background_image}" class="aspect-auto max-w-lg min-h-fit">
-            <div id="searchedTitle">${request.name}</div>
+    const game = 
+    `<section class="flex flex-col flex-wrap items-center">
+        <div id="searchedCard" class="shadow-2xl shadow-violet-700 overflow-scroll flex flex-col flex-wrap justify-center scale-75 bg-violet-500 rounded-3xl subpixel-antialiased border border-black hover:bg-red-300">
+            <img id="searchedImage" src="${request.background_image}" class="block text-center aspect-auto max-w-auto min-h-fit scale-75">
+            <div id="searchedTitle" class=" mb-3 text-center italic text-3xl font-bold font-mono subpixel-antialiased shadow-xl shadow-violet-600">${request.name}</div>
             <div id="searchedSlug" class="hidden">${request.slug}</div>
-            <div id="searchedGenres" class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">${genres}</div>
-            <div id="searchedDescription">${request.description}</div>
-            <div id="searchedPlatforms" class="flex flex-wrap font-sans text-sm justify-center font-medium relative top-5">${platforms}</div>
-            <button id="moreGamesButton" onclick="moreLikeThis(randomList)">More Games like this</button>
+            <div id="searchedGenres" class="mb-3 flex flex-wrap font-sans text-xl justify-center text-center font-medium shadow-md shadow-violet-600">${genres}</div>
+            <div id="searchedDescription" class=" mb-3 text-center text-xl font-semibold font-serif subpixel-antialiased shadow-xl shadow-violet-600">${request.description}</div>
+            <div id="searchedPlatforms" class="flex flex-wrap font-sans text-xl justify-center font-medium relative top-5">${platforms}</div>
         </div>
-    `
+        <button id="moreGamesButton" class="rounded-full bg-yellow-300 border-black border-2 items-center self-center mt-5 ml-1 p-1 hover:bg-yellow-500 active:bg-yellow-600" onclick="moreLikeThis(randomList)">More Games like this</button>
+    </section>`
     element.innerHTML = game
 }
 
@@ -239,10 +240,10 @@ async function moreLikeThis(element) {
     const relatedgames = uniqueArr.map((game) => {
 
         return `
-            <section id="moreCards" class="flex">
-                <img id="relatedGameImage" src="${game.background_image}">
-                <div id="relatedTitle">${game.name}</div>
-                <div id="relatedRelease">${game.released}
+            <section id="moreCards" class="scale-90 card bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-100">
+                <img id="relatedGameImage" class="aspect-auto max-w-lg min-h-fit" src="${game.background_image}">
+                <div id="relatedTitle" class=" text-center italic text-lg font-bold font-mono subpixel-antialiased shadow-xl shadow-violet-600">${game.name}</div>
+                <div id="relatedRelease" class="text-lg text-center font-mono subpixel-antialiased shadow-xl shadow-violet-600">${game.released}
             </section>
         `
     })
