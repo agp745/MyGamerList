@@ -34,7 +34,7 @@
                 <label for="searchBar" class="font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Search:</label>
                 <input type="text" id="searchBar" class="rounded-none border-2 border-sky-500">
                 <br>
-                <a href="../src/searchPage.html" target="_blank"><button id="searchButton" class="font-bold text-md border-2 border-black hover:bg-yellow-500">submit</button></a>
+                <button id="searchButton" class="font-bold text-md border-2 border-black hover:bg-yellow-500">submit</button>
             </section>
             <br>
             <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Genre</span>
@@ -70,10 +70,10 @@
         
 
         <section class="flex flex-col overflow-hidden" id="gameList">
-            <div class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">WHAT'S HOT?</div>
+            <div id="hotGamesTitle" class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">WHAT'S HOT?</div>
             <div id="top4" class="flex justify-center mb-10"></div>
         
-            <div class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">DISCOVER</div>
+            <div id="discoverTitle" class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased">DISCOVER</div>
         
             <div id="random" class=" flex space-x-1 overflow-hidden mx-32 p-3 border-2 rounded-3xl bg-slate-500 shadow-2xl shadow-violet-700"></div>
             <div class="directionalButtons text-center mt-3">

@@ -180,7 +180,7 @@ async function filteredSearch(element, genre, platforms, rating, release) {
         </div>`
     })
     element.innerHTML = ' '
-    element.innerHTML += filteredGames
+    element.innerHTML += filteredGames.join('')
 }
 
 async function getSearchedGame(element, searchTitle){
@@ -191,7 +191,7 @@ async function getSearchedGame(element, searchTitle){
     gameSearch(element, gameId)
 }
 
-//retrieve id and pass to more like this function
+//in div id="searchedSlug", change hidden style to tailwind class
 async function gameSearch(element, id) {
 
     const request = await fetch(`https://api.rawg.io/api/games/${id}?key=e9a677462e984c02a2f1a9afab3493e2`)
@@ -209,33 +209,45 @@ async function gameSearch(element, id) {
     const game = `
         <div id="searchedCard" class="bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-110">
             <img id="searchedImage" src="${request.background_image}" class="aspect-auto max-w-lg min-h-fit">
-            <div id="searchedTitlie">${request.name}</div>
-            <div id="searchedGenre class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">${genres}</div>
+            <div id="searchedTitle">${request.name}</div>
+            <div id="searchedSlug" class="hidden">${request.slug}</div>
+            <div id="searchedGenres" class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">${genres}</div>
             <div id="searchedDescription">${request.description}</div>
             <div id="searchedPlatforms" class="flex flex-wrap font-sans text-sm justify-center font-medium relative top-5">${platforms}</div>
+            <button id="moreGamesButton" onclick="moreLikeThis(randomList)">More Games like this</button>
         </div>
     `
     element.innerHTML = game
 }
 
-//add element
 //add more to card?
-//add feature which does not return same game (id from game SearcH)
-async function moreLikeThis(element, title, genre) {
-    const request = await fetch(`https://api.rawg.io/api/games?search=${title}&search_precise=true&genres=${genre}&page_size=5&key=e9a677462e984c02a2f1a9afab3493e2`)
+async function moreLikeThis(element) {
+    
+    const slug = document.querySelector('#searchedSlug').innerHTML
+    const genre = document.querySelector('#genre').innerHTML.toLowerCase().replace(' ', '-')
+    const title = document.querySelector('#searchedTitle').innerHTML
+
+    element.innerHTML = ''
+    discoverTitle.innerHTML = `Games like ${title}`
+
+    const request = await fetch(`https://api.rawg.io/api/games?search=${slug}&search_precise=true&genres=${genre}&page_size=6&key=e9a677462e984c02a2f1a9afab3493e2`)
     .then(response => response.json())
     const gamesArr = request.results
-    console.log(gamesArr)
 
-    const relatedgames = gamesArr.map((game) => {
+    const uniqueArr = gamesArr.filter((game) => game.slug !== slug)
+
+    const relatedgames = uniqueArr.map((game) => {
+
         return `
             <section id="moreCards" class="flex">
                 <img id="relatedGameImage" src="${game.background_image}">
                 <div id="relatedTitle">${game.name}</div>
+                <div id="relatedRelease">${game.released}
             </section>
         `
     })
-    element.innerHTML += relatedgames
+    element.innerHTML += relatedgames.join('')
+    
 }
 
 let genresFilteredArr = []
