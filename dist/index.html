@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" id="darkSwitch">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Gamer List</title>
+    <link rel="stylesheet" href="../src/input.css">
+    <link rel="stylesheet" href="../dist/output.css">
+</head>
+
+<body class="bg-slate-400 bg-fixed dark:before:bg-slate-800 dark:before:opacity-0" id="body">
+
+    <nav class="bg-yellow-300 dark:bg-violet-600 border-2 border-b-sky-500 border-t-0 rounded-b-lg ">
+        <a href="https://rawg.io/apidocs" target="_blank" class="float-right mr-2">API </a>
+        <a href="https://github.com/agp745/MyGamerList" target="_blank" class="mt-2 mr-2 float-right scale-150"><img id="github" src="../dist/assets/github.png"></a>
+        <span>My Gamer List</span>
+        <br>
+        <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" value="" class="sr-only peer" id="showFilters">
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Filter+Search</span>
+          </label>
+        <!-- <label>Filter</label>
+        <input type="checkbox" id="showFilters"> -->
+        <button id="darkButton" class="float-right">Dark Mode</button>
+        <!-- <div id="info" class="space-x-2 bg-red-400 text-right mr-2"> -->
+            
+        <!-- </div> -->
+    </nav>
+
+    
+
+    <div id="wrapper" class="flex min-[800px]:flex-row flex-col">
+        <section id="filters" class=" font-mono text-fuchsia-500 dark:text-green-600 flex-col rounded-r-xl bg-yellow-300 dark:bg-violet-600 hidden flex-initial p-12 overflow-y-scroll max-h-[85vw] border-2 border-r-sky-500 border-b-sky-500 border-t-0 border-l-0">
+            <section id="search" class="flex flex-col">
+                <label for="searchBar" class="font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Search:</label>
+                <input type="text" id="searchBar" class="rounded-none border-2 border-sky-500">
+                <br>
+                <button id="searchButton" class="font-bold text-md border-2 border-black hover:bg-yellow-500">submit</button>
+            </section>
+            <br>
+            <label for="filterBar" class="mb-4 font-bold text-xl underline decoration-violet-700 dark:decoration-yellow-300">Filters:</label>
+            <br>
+            <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Genre</span>
+            <input type="checkbox" id="genreCheckbox">
+            <div id="genreFilter" class="text-left hidden">
+                
+            </div>
+            <br>
+            <br>
+            <br>
+            <div>
+            <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Platform</span>
+           
+            <input type="checkbox" id="platformCheckbox" class="">
+            <div id="platformFilter" class="mt-2 hidden">
+            </div>
+            </div>
+                <br>
+            
+
+            <div class="rating flex flex-col mt-5">
+                <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Rating</span>
+                <input type="number" id="ratingInput" class="rounded-none border-2 border-sk-500">
+                <!-- SCALE 75 + FIX POSITIONING (ALIGN LEFT) -->
+            </div>
+
+            <div class="release mt-5 mb-10">
+                <span class="filterTitle font-bold text-xl mb-4 underline decoration-violet-700 dark:decoration-yellow-300">Release</span>
+                <input type="date" id="dateInput" class="snap-center mr-80">
+            </div>
+        </section>
+
+        
+
+        <section class="flex flex-col overflow-hidden" id="gameList">
+            <div id="hotGamesTitle" class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased"><span class="bg-violet-100 p-2 dark:bg-cyan-300 bg-opacity-80 rounded-full">WHAT'S HOT?</span></div>
+            <div id="top4" class="flex justify-center mb-10 scale-75 min-[800px]:scale-100"></div>
+        
+            <div id="discoverTitle" class="text-center mt-16 mb-4 text-fuchsia-500 dark:text-green-600 font-mono font-bold text-xl underline decoration-double subpixel-antialiased"><span class="bg-violet-100 p-2 dark:bg-cyan-300 bg-opacity-80 rounded-full">DISCOVER</span></div>
+        
+            <div id="random" class="flex-col min-[800px]:flex-row flex space-x-1 overflow-hidden mx-32 p-3 border-2 rounded-3xl bg-slate-500 shadow-2xl shadow-violet-700"></div>
+            <div class="directionalButtons text-center mt-3">
+                <button id ="leftArrow" class="leftArrow bg-yellow-300 border-2 items-center rounded-full border-double self-center hover:bg-yellow-500">L</button> 
+                <button id ="rightArrow" class="rightArrow bg-yellow-300 border-2 items-center rounded-full border-double self-center hover:bg-yellow-500">R</button>
+            </div>
+            <div class ="discoverButtons justify-center items-center text-center" id="discoverButtons">
+            <button id="randomButton" class="rounded-full bg-yellow-300 border-black border-2 items-center self-center mt-5 ml-12 p-1 hover:bg-yellow-500 active:bg-yellow-600">Randomize</button>
+            <button id="filterRandomButton" class="rounded-full bg-yellow-300 border-black border-2 items-center self-center mt-5 ml-1 p-1 hover:bg-yellow-500 active:bg-yellow-600">Randomize by filter</button>
+            </div>
+        </section>
+    </div>
+
+    
+    <script src="idLists.js"></script>
+    <script src="api.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

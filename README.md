@@ -20,4 +20,4 @@ We implement the rawg.io api to access their extensive database of video games a
 ## Technologies Used
 
 - Javascript
-- TailwindCss
+- TailwindCSS
