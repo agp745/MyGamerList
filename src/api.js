@@ -51,7 +51,7 @@ async function generalGames(element) {
         })
 
         return `
-        <div class="card bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-110" id="card">
+        <div class=" min-[800px]:scale-100 card bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-110" id="card">
         <a onclick="getSearchedGame(top4List, '${game.name}')">
             <img src="${game.background_image}" class="aspect-auto max-w-lg min-h-fit" id="cardImg">
             <div id="plat-genreContainer" class="flex flex-wrap font-sans text-xs justify-center font-medium underline shadow-md shadow-violet-600">
@@ -248,7 +248,7 @@ async function moreLikeThis(element) {
     element.innerHTML = ''
     discoverTitle.innerHTML = `Games like ${title}`
 
-    const request = await fetch(`https://api.rawg.io/api/games?search=${slug}&search_precise=true&genres=${genre}&page_size=6&exclude_additions=true&key=2f3ca7722ac84966acbe5a925e535d09`)
+    const request = await fetch(`https://api.rawg.io/api/games?search=${slug}&search_precise=true&genres=${genre}&page_size=21&exclude_additions=true&key=2f3ca7722ac84966acbe5a925e535d09`)
     .then(response => response.json())
     const gamesArr = request.results
 
@@ -257,9 +257,9 @@ async function moreLikeThis(element) {
     const relatedgames = uniqueArr.map((game) => {
 
         return `
-            <section id="moreCards" class="scale-90 card bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-100">
+            <section id="moreCards" class="max-w-sm max-h-fit scale-75 min-[800px]:scale-90 card bg-violet-500 rounded-lg subpixel-antialiased border border-black shadow-md shadow-black hover:bg-red-300 hover:scale-100">
             <a onclick="getSearchedGame(top4List, '${game.name}')">
-                <img id="relatedGameImage" class="aspect-auto max-w-lg min-h-fit" src="${game.background_image}">
+                <img id="relatedGameImage" class="min-[800px]:max-w-sm max-w-sm aspect-auto min-h-fit" src="${game.background_image}">
                 <div id="relatedTitle" class=" text-center italic text-lg font-bold font-mono subpixel-antialiased shadow-xl shadow-violet-600">${game.name}</div>
                 <div id="relatedRelease" class="text-lg text-center font-mono subpixel-antialiased shadow-xl shadow-violet-600">${game.released}
             </a>
